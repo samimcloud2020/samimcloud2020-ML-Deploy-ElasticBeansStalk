@@ -1,0 +1,15 @@
+.ebextensions/*.*
+buildspec.yaml
+eb.zip
+test.ipynb
+# Ignore unnecessary files
+.git
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.venv
+venv/
+node_modules/
+*.log

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:wght@900&display=swap">
+    <style>
+        body {
+            font-family: 'Besley', serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            display: inline-block;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Salary Prediction Based on Study Hours</h2>
+        <p>Enter the number of study hours to predict the expected score.</p>
+
+        <form action="{{ url_for('predict') }}" method="POST">
+            <label for="hours"><strong>Hours of Study:</strong></label><br>
+            <input type="number" id="hours" name="hours" step="0.1" min="0" required><br><br>
+            <button type="submit">Predict Score</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result-container">
+            <h3>Prediction Result</h3>
+            <p><strong>Study Hours:</strong> {{ hours }}</p>
+            <p><strong>Predicted Score:</strong> {{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
